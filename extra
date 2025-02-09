@@ -12,8 +12,8 @@ JavaScript
 ifelse,function,object,JSON,variables,Array
 
 
-/////////////////////////
 NPM
+/////////////////////////
 Basic NodeJS(in built)(Os,file,http)
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 Third Party Api (Weather Api)
@@ -70,6 +70,11 @@ package.json
 > answer all questions
 > type YES
 
+local dep
+global
+dev
+
+
 //step to install package(local dep)
 ** NodejS must be installed in laptop
 > go inside the folder using cmd/terminal
@@ -77,6 +82,38 @@ package.json
 
 npm i
 
-local dep
-global
-dev
+
+for dev dependency
+> npm i packagename --save-dev
+
+
+nodemon
+
+/// install global packages
+# window
+> open cmd as admin
+> npm i -g nodemon
+
+# mac/linux
+> open terminal
+> sudo npm i -g nodemon
+
+CRUD
+Create Read Update Delete
+
+Post   Get  Put    Delete
+
+Post> insert data in database
+Get > Retrive the data
+Put/Patch > Update the records
+Delete > Remove
+
+
+var a = 10
+var b = "My Age is "+a
+"My Age is 10"
+
+//es6
+var a = 10
+var b = `My age is ${a}`
+"My Age is 10"
