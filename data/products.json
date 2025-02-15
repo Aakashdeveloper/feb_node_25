@@ -1,7 +1,4 @@
-let express = require('express');
-let productRouter = express.Router()
-
-let products = [
+[
     {
         "id": 1,
         "product_name": "Girls top",
@@ -514,21 +511,3 @@ let products = [
         "company": "Bajaj"
     }
 ]
-
-function router(menu){
-
-    productRouter.route('/')
-        .get((req,res) => {
-        //res.send("This is the Product route")
-        res.render('products',{title:'Products Page',products,menu})
-    })
-    
-    productRouter.route('/details')
-        .get((req,res) => {
-        res.send('Details of Products')
-    })
-
-    return productRouter
-}
-
-module.exports = router

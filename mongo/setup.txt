@@ -1,0 +1,70 @@
+https://www.mongodb.com/products/self-managed/community-edition
+https://www.mongodb.com/products/tools/compass
+
+SQl          MongoDB
+Database     Database
+Table        Collection
+Row          Document
+SELECT       Find
+Insert       Insert
+Delete       Remove
+Update       Update/upsert
+
+
+https://www.mongodb.com/products/self-managed/community-edition
+# Download and Install
+# Go inside C drive and make folder by name of data
+# Inside Data folder make folder by name of db
+C:\data\db
+
+> open cmd and start server (27017)
+> go inside cd c:\programmFile\mongodb\..\bin
+> mongod
+* Do not close this cmd
+
+^Mac
+mongod --config /usr/local/etc/mongod.conf --fork
+
+
+> Start Mongo Client
+> open cmd 
+> go inside cd c:\programmFile\mongodb\..\bin
+> mongosh
+
+
+mongodb://localhost:27017
+
+//See all dbs
+show dbs
+
+//go inside Database
+use databasename
+
+//see all the Collection
+show collections
+
+//find all the data
+db.collectionName.find()
+
+//Add Condition in find
+db.products.find({category_id:2})
+
+
+//create new database
+use databasename
+
+
+//create collection/insert data
+db.user.insert({name:"Aakash"})
+
+{
+  _id: ObjectId('67b00d0aa47308e249546eee'),
+  name: 'Aakash'
+}
+
+_id > Primary key
+> unique
+> 12 byte size
+4 bytes> timestamp
+5 bytes> Random number
+3 bytes> Counter

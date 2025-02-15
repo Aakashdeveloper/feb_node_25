@@ -117,3 +117,50 @@ var b = "My Age is "+a
 var a = 10
 var b = `My age is ${a}`
 "My Age is 10"
+
+
+function add(a,b){
+    return a+b
+}
+
+add(1,2)
+
+Sql
+Unstructured
+RollNo | Hindi | English | computer
+   1   |  80   |         |
+   2   |       |    70   |
+   3   |  89   |         | 90
+  
+
+Structured > Sql
+AccNo  Date ATMLoc  Balance With
+
+
+Mongodb (nosql)
+[
+    {
+        "rollNo":1,
+        "Hindi":80
+    },
+    {
+        "rollNo":2,
+        "English":70
+    },
+    {
+        "rollNo":3,
+        "Hindi":89,
+        "computer":90
+    }
+]
+
+
+SQL
+> 
+
+
+NoSQL
+>
+
+
+async /await
