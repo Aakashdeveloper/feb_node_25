@@ -68,3 +68,25 @@ _id > Primary key
 4 bytes> timestamp
 5 bytes> Random number
 3 bytes> Counter
+
+
+http://cloud.mongodb.com/
+
+> Create Cluster
+
+> Cloud
+* https://www.mongodb.com/
+* try free
+> signup with google
+
+* Network access
+> Add IP 
+> 0.0.0.0/0
+* Database access
+> Create user
+Built-in Role
+> Atlas Admin
+> Add User
+
+
+mongodb+srv://<db_username>:<db_password>@cluster0.f8vmc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
