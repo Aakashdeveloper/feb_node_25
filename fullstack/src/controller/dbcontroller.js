@@ -10,7 +10,12 @@ async function dbConnect(){
     console.log('Connection Successfull')
 }
 
+async function getData(colName,query){
+    return await db.collection(colName).find(query).toArray()
+}
+
 
 module.exports = {
-    dbConnect
+    dbConnect,
+    getData
 }

@@ -13,10 +13,10 @@ ifelse,function,object,JSON,variables,Array
 
 
 NPM
-/////////////////////////
 Basic NodeJS(in built)(Os,file,http)
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 Third Party Api (Weather Api)
+/////////////////////////
 Node-Es6(.babel)
 Email With Node(nodemailer)
 Redis  > 6379
@@ -164,3 +164,13 @@ NoSQL
 
 
 async /await
+
+params
+> pass after /
+> complusory to define in the route
+> if define then need to pass
+
+queryParams
+> pass after ?
+> no need to define
+> no need to pass it is optional
