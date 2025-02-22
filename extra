@@ -17,10 +17,10 @@ Basic NodeJS(in built)(Os,file,http)
 NodeJS(full Stack App) (Node-EJS-Mongo-Express)
 Third Party Api (Weather Api)
 Node-Es6(.babel)
-/////////////////////////
-Email With Node(nodemailer)
 Redis  > 6379
+Email With Node(nodemailer)
 ImageUpload
+/////////////////////////
 MongoDb Basic >27017  (local/cloud)
 Api with NodeJS(Rest)>1
 Swagger
@@ -177,3 +177,17 @@ queryParams
 
 
 https://www.nodemailer.com/
+
+https://cloud.redis.io/
+
+Redis
+----------
+KEYS *
+set key value
+set test "abc" EX 100 
+get Key 
+del Key
+FLUSHALL
+
+
+promise vs async await
