@@ -4,6 +4,8 @@ https://git-scm.com/downloads > Install
 https://github.com/ > SignUp
 https://github.com/Aakashdeveloper > Follow
 
+https://www.postman.com/> Install
+
 vscode extension
 >vscode-icons
 
@@ -191,3 +193,17 @@ FLUSHALL
 
 
 promise vs async await
+
+
+cors
+cross origin resource sharing
+
+
+http status code
+200 > OK
+201 > OK + Create 
+400 > Bad Request
+401 > unauthorized
+403 > forbidden
+404 > Not Found
+500 > Internal server error
