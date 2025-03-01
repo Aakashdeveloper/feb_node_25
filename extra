@@ -22,9 +22,9 @@ Node-Es6(.babel)
 Redis  > 6379
 Email With Node(nodemailer)
 ImageUpload
-/////////////////////////
 MongoDb Basic >27017  (local/cloud)
 Api with NodeJS(Rest)>1
+/////////////////////////
 Swagger
 Testing
 Login/Logout(JWT)

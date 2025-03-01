@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import {ObjectId} from 'mongodb'
-import {dbConnect,getData} from './controller/dbController';
+import {dbConnect,getData,getDataSort,getDataSortLimit,postData} from './controller/dbController';
 //imnport bodyParser from 'body-parser'
 
 
@@ -106,6 +106,101 @@ app.get('/details/:id',async(req,res)=>{
 
 
 
+
+//filters
+app.get('/filters/:mealId',async(req,res)=>{
+    let query = {};
+    let collection = "restaurants";
+    let mealId = Number(req.params.mealId)
+    let cuisineId = Number(req.query.cuisineId)
+    let hcost = Number(req.query.hcost);
+    let lcost = Number(req.query.lcost);
+    let sort = {cost:1}
+    let skip = 0;
+    let limit = 10000000000000000;
+
+    if(req.query.sortKey && req.query.sortOrder){
+        let order = Number(req.query.sortOrder)?Number(req.query.sortOrder):1
+        sort =  {[req.query.sortKey]:order}
+        console.log(sort)
+    }
+
+    if(req.query.skip && req.query.limit){
+        skip = Number(req.query.skip );
+        limit = Number(req.query.limit );
+    }
+
+   
+    if(cuisineId && hcost && lcost){
+        query = {
+            "mealTypes.mealtype_id":mealId,
+            "cuisines.cuisine_id":cuisineId,
+            $and:[{cost:{$gt:lcost,$lt:hcost}}]
+        }
+    }
+    else if(cuisineId){
+        query = {
+            "mealTypes.mealtype_id":mealId,
+            "cuisines.cuisine_id":cuisineId
+        }
+
+    }else if(hcost && lcost){
+        query = {
+            "mealTypes.mealtype_id":mealId,
+            $and:[{cost:{$gt:lcost,$lt:hcost}}]
+        }
+    }else{
+        query = {
+            "mealTypes.mealtype_id":mealId
+        }
+    }
+    
+    let output = await getDataSortLimit(collection,query,sort,skip,limit)
+    res.status(200).send(output)
+})
+
+
+//menu wrt to rest
+app.get('/menu/:id',async(req,res) => {
+    let collection = 'menu';
+    let query = {restaurant_id:Number(req.params.id)};
+    let output = await getData(collection,query)
+    res.status(200).send(output)
+});
+
+//menuDetails {"id":[1,2,3]}
+app.post('/menuDetails',async(req,res)=>{
+    if(Array.isArray(req.body.id)){
+      let query = {menu_id:{$in:req.body.id}}
+      let collection = 'menu';
+      let output = await getData(collection,query)
+      res.status(200).send(output)
+    }else{
+        res.send(`Please Pass data in format of {"id":[1,2,3]}`)
+    }
+})
+
+
+//place order
+app.post('/placeOrder',async(req,res) => {
+    let data = req.body;
+    console.log(data)
+    let collection = "orders";
+    let output = await postData(collection,data);
+    res.status(200).send(output)
+
+})
+
+//get all orders
+app.get('/orders',async(req,res) => {
+    let collection = 'orders';
+    let query = {};
+    if(req.query.email){
+        query = {email:req.query.email};
+    }
+    let output = await getData(collection,query)
+    res.status(200).send(output)
+});
 
 //get Cities  auth with just key
 // autenticated with basic Auth

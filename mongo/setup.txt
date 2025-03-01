@@ -90,3 +90,71 @@ Built-in Role
 
 
 mongodb+srv://<db_username>:<db_password>@cluster0.f8vmc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+//Projection
+db.restaurants.find({condition},{Projection})
+
+db.restaurants.find({},{restaurant_name:1,_id:0,restaurant_thumb:1})
+
+
+db.restaurants.find({},{mealTypes:0,_id:0,cuisines:0,image_gallery:0})
+
+
+db.restaurants.find({state_id:3},{restaurant_name:1,_id:0,restaurant_thumb:1})
+
+
+db.restaurants.find({"mealTypes.mealtype_id":1})
+
+
+db.restaurants.find({},{restaurant_name:1,_id:0,address:1}).sort({restaurant_name:1})
+
+db.restaurants.find({},{restaurant_name:1,_id:0,address:1}).sort({restaurant_name:-1})
+
+
+db.restaurants.find({},{restaurant_name:1,_id:0,cost:1}).sort({restaurant_name:1}).limit(5)
+
+
+//first 5
+db.restaurants.find({},{restaurant_name:1,_id:0,cost:1}).sort({cost:1}).skip(0).limit(5)
+
+//from 6 to 10
+db.restaurants.find({},{restaurant_name:1,_id:0,cost:1}).sort({cost:1}).skip(5).limit(5)
+
+//from 11 to 15
+db.restaurants.find({},{restaurant_name:1,_id:0,cost:1}).sort({cost:1}).skip(10).limit(5)
+
+
+
+//from 16 to 20
+db.restaurants.find({},{restaurant_name:1,_id:0,cost:1}).sort({cost:1}).skip(15).limit(5)
+
+//
+db.restaurants.find({cost:{$gt:900}},{restaurant_name:1,_id:0,cost:1})
+
+db.restaurants.find({cost:{$gt:600,$lt:1000}},{restaurant_name:1,_id:0,cost:1})
+
+
+db.restaurants.find({
+  $and:[
+    {"mealTypes.mealtype_id":1},
+    {"cuisines.cuisine_id":1}
+  ]
+},
+{
+  restaurant_name:1,
+  mealTypes:1,
+  cuisines:1
+})
+
+db.restaurants.find({
+  $or:[
+    {"mealTypes.mealtype_id":1},
+    {"cuisines.cuisine_id":1}
+  ]
+},
+{
+  restaurant_name:1,
+  mealTypes:1,
+  cuisines:1
+})
