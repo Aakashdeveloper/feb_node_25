@@ -158,3 +158,68 @@ db.restaurants.find({
   mealTypes:1,
   cuisines:1
 })
+
+//Update
+db.collection.updateOne({condition,update})
+
+db.orders.updateOne(
+  {"orderId":6},
+  {
+    $set:{
+      "status":"On the Way",
+      "dorr Bell":"no"
+    }
+  }
+)
+
+db.orders.updateOne(
+  {"orderId":6},
+  {
+    $unset:{
+      "phone":1
+    }
+  }
+)
+
+
+
+db.orders.updateOne(
+  {"orderId":7},
+  {
+    $unset:{
+      "phone":1
+    }
+  }
+)
+
+
+
+db.orders.updateOne(
+  {"orderId":7},
+  {
+    $set:{
+        "orderId": 7,
+        "name": "Kunal",
+        "email": "kunal@gmail.com",
+        "address": "Hom 65",
+        "cost": 987,
+        "menuItem": [
+            89,
+            76,
+            45
+        ],
+        "status": "On the Way",
+        "dorr Bell": "no"
+    }
+  },{
+    upsert:true
+  }
+)
+
+//Delete
+//remove all data
+db.users.remove({})
+
+db.orders.delete({condition})
+
+db.orders.deleteOne({"orderId":7})

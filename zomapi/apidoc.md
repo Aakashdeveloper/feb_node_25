@@ -61,7 +61,17 @@ http://localhost:9811/placeOrder
 * http://localhost:9811/orders
 * http://localhost:9811/orders?email="a@a.com"
 # Update order status( PUT)
+http://localhost:9811/updateOrder
+
+{
+    "_id": "67c285f0d37f569acc47c87b",
+    "status": "Delevered"
+}
 # Delete Order (DELETE)
+http://localhost:9811/deleteOrder
+{
+     "_id": "67c285f0d37f569acc47c87b"
+}
 
 
 

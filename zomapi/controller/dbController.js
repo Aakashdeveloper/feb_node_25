@@ -53,11 +53,34 @@ async function postData(colName,data){
     return output
 }
 
+async function updateData(colName,condition,data){
+    let output;
+    try{
+        output = await db.collection(colName).updateOne(condition,data)
+    }catch(err){
+        output = {"Error":"Error in update data"}
+    }
+    return output
+}
+
+async function deleteData(colName,condition){
+    let output;
+    try{
+        output = await db.collection(colName).deleteOne(condition)
+    }catch(err){
+        output = {"Error":"Error in delete data"}
+    }
+    return output
+}
+
+
 
 export {
     dbConnect,
     getData,
     getDataSort,
     getDataSortLimit,
-    postData
+    postData,
+    updateData,
+    deleteData
 }

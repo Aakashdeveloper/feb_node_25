@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import {ObjectId} from 'mongodb'
-import {dbConnect,getData,getDataSort,getDataSortLimit,postData} from './controller/dbController';
+import {dbConnect,getData,getDataSort,getDataSortLimit,postData,
+    updateData,deleteData} from './controller/dbController';
 //imnport bodyParser from 'body-parser'
 
 
@@ -42,7 +43,7 @@ app.get('/',(req,res) => {
 
 // unautenticated
 //get Cities
-app.get('/location',async(req,res) => {
+app.get('/location',basicAuth,async(req,res) => {
     let query = {};
     let collection = 'location';
     let output = await getData(collection,query)
@@ -201,6 +202,33 @@ app.get('/orders',async(req,res) => {
     let output = await getData(collection,query)
     res.status(200).send(output)
 });
+
+//update Order
+app.put('/updateOrder',async(req,res) => {
+    let collection = "orders";
+    let condition = {_id:new ObjectId(req.body._id)}
+    let data = {
+        $set:{
+            "status":req.body.status
+        }
+    }
+
+    let output = await updateData(collection,condition,data);
+    res.status(200).send(output)
+})
+
+
+app.delete('/deleteOrder',async(req,res) => {
+    let collection ="orders"
+    let condition = {_id:new ObjectId(req.body._id)}
+    let row = await getData(collection,condition)
+    if(row.length>0){
+        await deleteData(collection,condition);
+        res.status(200).send("Data Deleted")
+    }else{
+        res.status(200).send("No Record found")
+    }
+})
 
 //get Cities  auth with just key
 // autenticated with basic Auth
