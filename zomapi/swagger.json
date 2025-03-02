@@ -1,0 +1,215 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+            "title":"Restaurant API",
+            "version":"1.0.0",
+            "description":"API for Restaurant CRUD"
+    },
+    "components":{
+        "securitySchemes":{
+            "BasicAuth":{
+                "type":"http",
+                "scheme":"basic"
+            }
+        }
+    },
+    "security":
+    [
+        {
+            "BasicAuth":[]
+        }
+    ],
+    "tags":[
+        {
+            "name":"PUBLIC ROUTE",
+            "description":"Public Route"
+        },
+        {
+            "name":"PROTECTED ROUTE",
+            "description":"Protected Route"
+        }
+    ],
+    "paths":{
+        "/":{
+            "summary":"Testing HeartBeat",
+            "get":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/location":{
+            "summary":"Testing Location",
+            "get":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/details/{id}":{
+            "summary":"Testing Location",
+            "get":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "required":true,
+                        "schema":{
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/filters/{mealId}":{
+            "summary":"Testing Location",
+            "get":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "parameters":[
+                    {
+                        "name":"mealId",
+                        "in":"path",
+                        "required":true,
+                        "schema":{
+                            "type":"string"
+                        }
+                    },
+                    {
+                        "name":"cuisineId",
+                        "in":"query",
+                        "schema":{
+                            "type":"string"
+                        }
+                    },
+                    {
+                        "name":"x-auth-token",
+                        "in":"header"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/mealtype":{
+            "summary":"Testing MealType",
+            "get":{
+                "description":"USE MealType Check",
+                "tags":["PROTECTED ROUTE"],
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/placeOrder":{
+            "summary":"Testing Place order",
+            "post":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "orderId": 11,
+                                "name": "Amit",
+                                "email": "amit@gmail.com",
+                                "address": "Hom 65",
+                                "phone": 8934645457,
+                                "cost": 612,
+                                "menuItem": [
+                                    45,
+                                    34,
+                                    41
+                                ],
+                                "status": "Pending"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/updateOrder":{
+            "summary":"Testing Update order",
+            "put":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "orderId": 11,
+                                "status": "Pending"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        },
+        "/deleteOrder":{
+            "summary":"Testing delete order",
+            "delete":{
+                "description":"USE Health Check",
+                "tags":["PUBLIC ROUTE"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "_id": 11
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Health Pass"
+                    }
+                }
+            }
+        }
+    }
+}

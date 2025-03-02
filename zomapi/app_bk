@@ -5,17 +5,12 @@ import {ObjectId} from 'mongodb'
 import {dbConnect,getData,getDataSort,getDataSortLimit,postData,
     updateData,deleteData} from './controller/dbController';
 //imnport bodyParser from 'body-parser'
-import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from 'swagger-ui-express';
-import SwaggerDocument from './swagger.json'
 
 
 let app = express();
 dotenv.config();
 let port = process.env.PORT;
 let key = process.env.KEY
-
-app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(SwaggerDocument))
 // middleware
 app.use(cors())
 // app.use(bodyParser.urlencoded({extended:true}));
@@ -48,7 +43,7 @@ app.get('/',(req,res) => {
 
 // unautenticated
 //get Cities
-app.get('/location',async(req,res) => {
+app.get('/location',basicAuth,async(req,res) => {
     let query = {};
     let collection = 'location';
     let output = await getData(collection,query)
@@ -72,7 +67,7 @@ app.get('/restaurants',async(req,res) => {
 
 
 // get all meals
-app.get('/mealtype',basicAuth,async(req,res) => {
+app.get('/mealtype',async(req,res) => {
     let query = {};
     let collection = 'mealType';
     let output = await getData(collection,query)
@@ -173,7 +168,6 @@ app.get('/menu/:id',async(req,res) => {
     let output = await getData(collection,query)
     res.status(200).send(output)
 });
-
 
 //menuDetails {"id":[1,2,3]}
 app.post('/menuDetails',async(req,res)=>{
