@@ -4,7 +4,7 @@
 
 // Register
 (POST)> http://3.17.216.66:5000/api/auth/register 
-(body) => {"name":"Aakash", "email":"aa@gmail.com","password":"12345678","phone":343432,role?":"user"}
+(body) => 
 
 /*Login/ 
 (POST) => http://3.17.216.66:5000/api/auth/login 

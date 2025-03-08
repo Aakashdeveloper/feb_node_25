@@ -25,11 +25,11 @@ ImageUpload
 MongoDb Basic >27017  (local/cloud)
 Api with NodeJS(Rest)>1
 Swagger
+Login/Logout(JWT)
+NodeJs with postgres
 /////////////////////////
 Testing
-Login/Logout(JWT)
 GraphQl API
-NodeJs with postgres
 Github
 --Deployment of app---
 render
@@ -210,3 +210,7 @@ http status code
 
 
 Husky
+
+//postgres
+> pg_ctl -D /usr/local/var/postgres start
+> pg_ctl -D /usr/local/var/postgres stop
