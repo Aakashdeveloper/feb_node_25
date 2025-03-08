@@ -27,9 +27,9 @@ Api with NodeJS(Rest)>1
 Swagger
 Login/Logout(JWT)
 NodeJs with postgres
+GraphQl API
 /////////////////////////
 Testing
-GraphQl API
 Github
 --Deployment of app---
 render
@@ -214,3 +214,8 @@ Husky
 //postgres
 > pg_ctl -D /usr/local/var/postgres start
 > pg_ctl -D /usr/local/var/postgres stop
+
+
+//global install
+npm i -g json-server 
+json-server --watch db.json --port 9088
