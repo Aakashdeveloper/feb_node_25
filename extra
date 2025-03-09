@@ -28,14 +28,18 @@ Swagger
 Login/Logout(JWT)
 NodeJs with postgres
 GraphQl API
-/////////////////////////
-Testing
 Github
+Testing
 --Deployment of app---
 render
 Pm2
 Docker
 Nginx
+/////////////////////////
+
+
+
+
 
 NPM
 
@@ -221,3 +225,10 @@ npm i -g json-server
 json-server --watch db.json --port 9088
 
 https://raw.githubusercontent.com/Aakashdeveloper/Aakashdeveloper/refs/heads/master/README.md
+
+
+npm i -g pm2
+
+
+docker build . -t imagename
+docker run 7660:9811 imagename

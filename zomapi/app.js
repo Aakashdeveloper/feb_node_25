@@ -42,7 +42,7 @@ const basicAuth = (req,res,next) => {
 }
 
 //heartbeat
-app.get('/',(req,res) => {
+app.get('/health',(req,res) => {
     res.status(200).send('ok')
 })
 

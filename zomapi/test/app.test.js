@@ -1,26 +1,21 @@
-import {expect} from 'chai';
-import request from 'supertest';
-import dotenv from 'dotenv';
-import app from '../app';
+const request = require('supertest');
+const {expect} = require('chai');
+const app = require('../app');
 
-dotenv.config();
-//chai.use(chaiHttp);
-
-const BASIC_AUTH_USER = process.env.BASIC_AUTH_USER
-const BASIC_AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD
-const authHeader = `Basic ${Buffer.from(`${BASIC_AUTH_USER}:${BASIC_AUTH_PASSWORD}`).toString('base64')}`;
-
-describe(`Api Test`,() => {
-    it('Should return 200 for heartbeat',() => {
-        request(app)
-        .get('/location')
-        .end((err,res) => {
-            expect(res).to.have.status(200);
-            expect(res.text).to.equal('ok')
-            done()
+describe('Api Route', () => { 
+    describe('GET /',() => {
+        it('Health Check', async function(){
+            const res = await request(app).get('/health');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.an(array)
         })
     })
-})
 
-
-
+    describe('GET /',() => {
+        it('Health Check', async function(){
+            const res = await request(app).get('/location');
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.an(array)
+        })
+    })
+ })

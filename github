@@ -1,0 +1,19 @@
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Aakashdeveloper/nodecode35.git
+git push -u origin main
+
+
+//next time from same folder
+git add .
+git commit -m "first commit"
+git push
+
+
+git clone https://github.com/Aakashdeveloper/nodecode35
+
+git branch 
+
+git checkout -b "branchname"
